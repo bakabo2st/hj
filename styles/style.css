@@ -1,0 +1,470 @@
+body {
+  font-family: "Kaisei opti", serif; 
+  font-weight: 400;
+  font-display: swap;
+  color:#333;
+}
+
+header {
+  padding: 32px ;
+}
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+article {
+  margin-bottom: 32px;
+}
+
+footer{
+  display: block;
+  margin: 128px 0 64px 0;
+  padding: 32px 16px 64px 16px;
+  border-top: #111;
+}
+p {
+  line-height: 2em;
+  margin-bottom: 16px;
+}
+svg {
+	vertical-align: bottom;
+}
+.siteName {
+  float: left;
+  font-family: "Kaisei opti", serif;
+  font-display: swap;
+  font-size: 3em;
+  font-weight: 700;
+  color: #333;
+}
+
+.snsIcons {
+  float: right;
+  display: table;
+  width: 30%;
+  list-style: none;
+}
+.clear {
+  clear:both;
+}
+.icon {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+h2 {
+  font-size: 3em;
+  margin: 64px 0 16px 0;
+}
+a {
+  text-decoration: none;
+  color: #C71585;
+}
+a:hover{
+  color:#ff99cc
+}
+
+.alRight {
+  display: inline-block;
+  float: right;
+  margin-left:16px;
+}
+
+/* 全体の囲み */
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+/* 各セクション */
+section{
+  margin-top: 32px;
+}
+/* ナビゲーションとトップページのバナー */
+.menu , .topBunner {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+/* ナビゲーション */
+.menu {
+  display: flex;
+}
+
+.menu li{
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.menu li a, .topBunner li a{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding-block: 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+}
+
+/* トップページのバナー */
+.topBunner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows   : 1fr;
+  margin-top: 8px;
+  border: none;
+}
+
+.shopBunner{
+  grid-column: 1 / 4;
+  grid-row   : 2 / 2;
+  margin-top: 0;
+}
+
+.topBunner li{
+  display: flex;
+  width: 100%;
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+}
+
+.topBunner li a:hover{
+  opacity: 0.5;
+}
+
+/* From uiverse.io by @mateusneves */
+button {
+font-family: serif;
+font-display: swap;
+ position: relative;
+ font-size: 14px;
+ letter-spacing: 3px;
+ height: 3em;
+ margin-top: 32px;
+ padding: 0 3em;
+ border: none;
+ background-color: #c41b54;
+ color: #fff;
+ text-transform: uppercase;
+ overflow: hidden;
+ border-radius: 5px;
+ cursor: pointer;
+}
+
+button::before {
+ content: '';
+ display: block;
+ position: absolute;
+ z-index: 0;
+ bottom: 0;
+ left: 0;
+ height: 0px;
+ width: 100%;
+ background: rgb(196,27,84);
+ background: linear-gradient(90deg, rgba(196,27,84,1) 20%, rgba(124,7,46,1) 100%);
+ transition: 0.2s;
+}
+
+button .label {
+ position: relative;
+}
+
+button .icon {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 3em;
+ width: 3em;
+ position: absolute;
+ top: 3em;
+ right: 0;
+ opacity: 0;
+ transition: 0.4s;
+}
+
+button:hover::before {
+ height: 100%;
+}
+
+button:hover .icon {
+ top: 0;
+ opacity: 1;
+}
+.butSmlTxt {
+  margin-top: 0;
+  line-height: 0;
+  font-size: 0.8em;
+}
+
+/* ライブの予定 */
+.gigSchedule{
+  margin-bottom: 64px;
+}
+.gigDate{
+  display: inline;
+  font-size: 1.5em;
+}
+.gigTitle {
+  margin: 8px 0 8px 0;
+  font-size: 1.2em;
+}
+.gigDetail{
+  margin-top: 16px;
+}
+ .address , .tel , .note {
+  font-family: serif;
+  font-display: swap;
+ }
+.gigNote {
+  padding: 8px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+ .timeTable {
+    margin-top: 16px;
+    padding: 16px;
+    background: #eee;
+  }
+.timeTable ol {
+  list-style-type: none;
+}
+/* ライブの予定 */
+dl {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+dt {
+  width:8%;
+  padding-left: 8px;
+  margin-bottom: 8px;
+  text-align:justify;
+}
+
+dd {
+  width: 92%;
+  margin-bottom: 8px;
+}
+
+.bills {
+  width: 30%;
+}
+
+
+
+@media(max-width:800px){
+  .wrapper{
+    width: 95%;
+  }
+  main{
+    width: 100%;
+  }
+  .menu, .topBunner{
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .menu li{
+   width: 33%;
+  }
+  .topBunner {
+    display: flex;
+  }
+  .topBunner li{
+    width: 100%;
+  }
+  dt {
+    width: 15%;
+    padding-left: 8px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align:justify;
+  }
+
+  dd {
+    width: 85%;
+    margin-bottom: 8px;
+  }
+
+  button {
+    display:inline-block;
+    width: 100%;
+    margin: 32px auto;
+    text-align: center;
+  }
+  .alRight {
+    clear: both;
+    width: 100%;
+    margin: 0 auto;
+
+  }
+  .bills {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+
+/***********ブログ***************/
+aside{
+  font-family: serif;
+  font-display: swap;
+}
+.eyecatch {
+  margin: 32px 0;
+}
+.bar{
+  margin: 16px 0;
+}
+.postbody{
+  margin-top: 32px;
+}
+/* ブログ記事の情報 */
+
+.info time , .info .cat ul {
+	margin-bottom: 5px;
+  font-size: 0.8em;
+}
+
+.info .cat ul {
+	list-style: none;
+	display: inline-flex;
+}
+.info .cat li:not(:last-child)::after {
+	content: ' / ';
+	margin: 0 5px;
+}
+
+@media (min-width: 768px) {
+	.info {
+		display: flex;
+		justify-content: space-between;
+		font-size: 16px;
+	}
+}
+
+
+/* 前後の記事へのリンク */
+.postlink {
+	margin-top: 4em;
+	list-style: none;
+	color: #477294;
+	font-size: 14px;
+	display: flex;
+}
+
+.postlink li {
+	width: 48%;
+	display: flex;
+	align-items: center;
+}
+
+.postlink a {
+	display: flex;
+	align-items: center;
+}
+
+.postlink .next {
+	margin-left: auto;
+	justify-content: flex-end;
+}
+
+.postlink .prev [class*="fa-"] {
+	margin-right: 10px;
+}
+.postlink .next [class*="fa-"] {
+	margin-left: 10px;
+}
+
+
+/* ブログ記事一覧ページ */
+.bloglist .container {
+	max-width: 1000px;
+}
+
+.bloglist .posts {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+/* ブログ記事一覧 */
+.posts {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.posts article {
+	width: 48%;
+	margin-bottom: 20px;
+}
+
+.posts figure {
+	max-height: 100%;
+	height: 150px;
+}
+
+.posts img {
+	object-fit: cover;
+}
+
+.posts h3 {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+@media (min-width: 768px) {
+	.posts h3 {
+		font-size: 16px;
+	}
+
+	.posts figure {
+		height: 200px;
+	}
+}
+
+
+/* ページネーション */
+.pagenation {
+	margin-top: 1.8em;
+	list-style: none;
+	display: flex;
+}
+
+.pagenation .next {
+	margin-left: auto;
+}
+
+.pagenation a {
+	width: 10em;
+	padding: 0.5em 1em;
+	border-radius: 1em;
+	background-color: #477294;
+	color: #fff;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+}
+.pagenation .next a {
+	justify-content: flex-end;
+}
+
+.pagenation .prev [class*="fa-"] {
+	margin-right: 10px;
+}
+.pagenation .next [class*="fa-"] {
+	margin-left: 10px;
+}
