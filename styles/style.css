@@ -289,7 +289,7 @@ line-height: 1em;
   }
   .snsIcons {
     float: none;
-    margin: 8px auto 32px auto;
+    margin: 32px auto 8px auto;
     width: 100%;
     list-style: none;
   }
