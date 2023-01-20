@@ -34,6 +34,7 @@ svg {
 }
 .siteName {
   float: left;
+	width: 70%;
   font-family: "Kaisei opti", serif;
   font-display: swap;
   font-size: 3em;
