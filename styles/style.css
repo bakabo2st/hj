@@ -283,10 +283,11 @@ dd {
     float: none;
     margin: 0 auto;
 font-size: 3.5em;
+line-height: 0.2em;
   }
   .snsIcons {
     float: none;
-    margin: 32px auto;
+    margin: 8px auto;
     width: 100%;
     list-style: none;
   }
