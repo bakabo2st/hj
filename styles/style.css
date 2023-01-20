@@ -1,12 +1,12 @@
 body {
   font-family: "Kaisei opti", serif; 
-  font-weight: bold;
+  font-weight: 400;
   font-display: swap;
   color:#333;
 }
 
 header {
-  padding: 32px ;
+  padding: 32px 32px 8px 32px ;
 }
 main {
   width: 80%;
@@ -37,7 +37,9 @@ svg {
   font-weight: 700;
   color: #333;
 }
-
+.br-sp {
+  display: none;
+}
 .snsIcons {
   float: right;
   display: table;
@@ -65,7 +67,6 @@ a:hover{
 }
 
 .alRight {
-  display: inline-block;
   float: right;
   margin-left:16px;
 }
@@ -75,51 +76,13 @@ a:hover{
   width: 90%;
   margin: 0 auto;
 }
-/* 各セクション */
-section{
-  margin-top: 32px;
-}
-/* ナビゲーションとトップページのバナー */
-.menu , .topBunner {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-}
-/* ナビゲーション */
-.menu {
-  display: flex;
-}
-
-.menu li{
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-}
-
-.menu li a, .topBunner li a{
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  padding-block: 16px;
-  color: #333;
-  text-decoration: none;
-}
-
-.menu li a:hover {
-  cursor: pointer;
-  background: #333;
-  color: #fff;
-}
 
 /* トップページのバナー */
 .topBunner {
   display: grid;
+  padding: 0;
+  margin: 0;
+  list-style: none;
   grid-template-columns: 1fr 1fr;
   grid-template-rows   : 1fr;
   margin-top: 8px;
@@ -271,12 +234,9 @@ dd {
   main{
     width: 100%;
   }
-  .menu, .topBunner{
+  .topBunner{
     flex-wrap: wrap;
     width: 100%;
-  }
-  .menu li{
-   width: 33%;
   }
   .topBunner {
     display: flex;
@@ -304,167 +264,27 @@ dd {
     text-align: center;
   }
   .alRight {
-    clear: both;
+    float: none;
     width: 100%;
     margin: 0 auto;
-
   }
+
   .bills {
-    width: 100%;
+    width: 70%;
     margin: 0 auto;
   }
-}
+  .siteName {
+    float: none;
+    margin: 0 auto;
 
-
-/***********ブログ***************/
-aside{
-  font-family: serif;
-  font-display: swap;
+  }
+  .snsIcons {
+    float: none;
+    margin: 0 auto;
+    width: 80%;
+    list-style: none;
+  }
+  .br-sp {
+    display: block;
 }
-.eyecatch {
-  margin: 32px 0;
-}
-.bar{
-  margin: 16px 0;
-}
-.postbody{
-  margin-top: 32px;
-}
-/* ブログ記事の情報 */
-
-.info time , .info .cat ul {
-	margin-bottom: 5px;
-  font-size: 0.8em;
-}
-
-.info .cat ul {
-	list-style: none;
-	display: inline-flex;
-}
-.info .cat li:not(:last-child)::after {
-	content: ' / ';
-	margin: 0 5px;
-}
-
-@media (min-width: 768px) {
-	.info {
-		display: flex;
-		justify-content: space-between;
-		font-size: 16px;
-	}
-}
-
-
-/* 前後の記事へのリンク */
-.postlink {
-	margin-top: 4em;
-	list-style: none;
-	color: #477294;
-	font-size: 14px;
-	display: flex;
-}
-
-.postlink li {
-	width: 48%;
-	display: flex;
-	align-items: center;
-}
-
-.postlink a {
-	display: flex;
-	align-items: center;
-}
-
-.postlink .next {
-	margin-left: auto;
-	justify-content: flex-end;
-}
-
-.postlink .prev [class*="fa-"] {
-	margin-right: 10px;
-}
-.postlink .next [class*="fa-"] {
-	margin-left: 10px;
-}
-
-
-/* ブログ記事一覧ページ */
-.bloglist .container {
-	max-width: 1000px;
-}
-
-.bloglist .posts {
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-
-/* ブログ記事一覧 */
-.posts {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-
-.posts article {
-	width: 48%;
-	margin-bottom: 20px;
-}
-
-.posts figure {
-	max-height: 100%;
-	height: 150px;
-}
-
-.posts img {
-	object-fit: cover;
-}
-
-.posts h3 {
-	margin-top: 10px;
-	font-size: 14px;
-}
-
-@media (min-width: 768px) {
-	.posts h3 {
-		font-size: 16px;
-	}
-
-	.posts figure {
-		height: 200px;
-	}
-}
-
-
-/* ページネーション */
-.pagenation {
-	margin-top: 1.8em;
-	list-style: none;
-	display: flex;
-}
-
-.pagenation .next {
-	margin-left: auto;
-}
-
-.pagenation a {
-	width: 10em;
-	padding: 0.5em 1em;
-	border-radius: 1em;
-	background-color: #477294;
-	color: #fff;
-	font-size: 14px;
-	display: flex;
-	align-items: center;
-}
-.pagenation .next a {
-	justify-content: flex-end;
-}
-
-.pagenation .prev [class*="fa-"] {
-	margin-right: 10px;
-}
-.pagenation .next [class*="fa-"] {
-	margin-left: 10px;
 }
