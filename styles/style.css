@@ -238,28 +238,6 @@ dd {
   width: 50%;
 }
 
-.check_input {
-  display: none;
-}
-.check_label {
-  display: block;
-  padding: 10px;
-  background-repeat: no-repeat;
-  background-size: 16px;
-  background-position: 98% center;
-}
-.check_label:: after {
-	content:"aaa";
-	  border-top: solid 4px #333;
-  border-left: solid 4px #333;
-  width: 24px;
-  height: 24px;
-  transform: rotate(45deg);
-}
-.check_input:checked + .check_label {
-  background-image: url(http://kasumiblog.xsrv.jp/codepen/images/arrow_up.png);
-}
-
 /* コンテンツ非表示 */
 .contents {
   display: none;
