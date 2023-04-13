@@ -244,14 +244,13 @@ dd {
 .check_label {
   display: block;
   padding: 10px;
-      background-image: url(http://kasumiblog.xsrv.jp/codepen/images/arrow_down.png);
   background-repeat: no-repeat;
   background-size: 16px;
   background-position: 98% center;
 }
 .check_label:: after {
-	  border-top: solid 4px #5bc8ac;
-  border-left: solid 4px #5bc8ac;
+	  border-top: solid 4px #333;
+  border-left: solid 4px #333;
   width: 24px;
   height: 24px;
   transform: rotate(45deg);
