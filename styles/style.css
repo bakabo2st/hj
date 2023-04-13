@@ -238,6 +238,31 @@ dd {
   width: 50%;
 }
 
+.check_input {
+  display: none;
+}
+.check_label {
+  display: block;
+  padding: 10px;
+      background-image: url(http://kasumiblog.xsrv.jp/codepen/images/arrow_down.png);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 98% center;
+}
+.check_input:checked + .check_label {
+  background-image: url(http://kasumiblog.xsrv.jp/codepen/images/arrow_up.png);
+}
+
+/* コンテンツ非表示 */
+.contents {
+  display: none;
+}
+
+/* checkをクリックしたらコンテンツを表示 */
+.check_input:checked + .check_label + .contents{
+  display: block;
+}
+
 
 
 @media(max-width:800px){
