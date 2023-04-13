@@ -249,6 +249,13 @@ dd {
   background-size: 16px;
   background-position: 98% center;
 }
+.check_label: after {
+	  border-top: solid 4px #5bc8ac;
+  border-left: solid 4px #5bc8ac;
+  width: 24px;
+  height: 24px;
+  transform: rotate(45deg);
+}
 .check_input:checked + .check_label {
   background-image: url(http://kasumiblog.xsrv.jp/codepen/images/arrow_up.png);
 }
