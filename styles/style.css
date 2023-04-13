@@ -235,7 +235,7 @@ dd {
 }
 
 .bills {
-  width: 70%;
+  width: 50%;
 }
 
 
@@ -286,7 +286,8 @@ dd {
     width: 70%;
     margin: 0 auto;
   }
-  .siteName {
+
+.siteName {
     float: none;
     margin: 0 auto;
     width: 100%;
