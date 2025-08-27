@@ -163,113 +163,41 @@
         </a>
       </section>
       <section>
-        <h2 id="gig">ライブの予定</h2>
-	<article class="gigSchedule">
-<article class="gigSchedule">
-<h3 class="gigDate">
-5月9日(金)<span class="gigPlace">
-	<a href="https://clubwater-n.jimdofree.com/" rel="noopener noreferrer" target="_blank">大阪 西成 CLUB WATER </a>
-	</span>
-	</h3> 
-	<p class="address">
-		大阪市西成区太子1-4-5<a href="https://maps.app.goo.gl/G5Y9Nbpwrm57Z6P6A"  rel="noopener noreferrer" target="_blank">(地図)</a>
-	<br />電話:<a href="tel:080-7247-0707" class="tel">080-7247-0707</a>
-	</p>
-	<p class="gigTitle"> 【新緑の候〜フロアライブ】</p> 
-<dl class="gigDetail">
-<dt>出演</dt>
-<dd>siva｜市村マサミ｜山下聡美｜いわいあや子 </dd>
-	<dt>開場</dt>
-<dd>19:00</dd>
-	<dt>開演</dt>
-<dd>19:30</dd>
-	<dt>前売</dt>
-<dd>2000</dd>
-	<dt>当日</dt>
-<dd>2500</dd>
-	</dl>
- </article>
-		<article class="gigSchedule">
-<h3 class="gigDate">
-5月18日(日)<span class="gigPlace">
-	<a href="https://teramachidaijobu.com/" rel="noopener noreferrer" target="_blank">京都 河原町 カレー&バー 寺町  大丈夫 </a>
-	</span>
-	</h3> 
-	<p class="address">
-		京都市中京区式部町2 4 9 ふじ会館 2F<a href="https://goo.gl/maps/4cXVYwUNEjVuKdDW9"  rel="noopener noreferrer" target="_blank">(地図)</a>
-	<br />電話:<a href="tel:0752547810" class="tel"075-254-7810</a>
-	</p>
-	<p class="gigTitle"> いつまでも世界は</p> 
-<!-- <dl class="gigDetail">
-<dt>出演</dt>
-<dd>siva｜市村マサミ｜山下聡美｜いわいあや子 </dd>
-	<dt>開場</dt>
-<dd>19:00</dd>
-	<dt>開演</dt>
-<dd>19:30</dd>
-	<dt>前売</dt>
-<dd>2000</dd>
-	<dt>当日</dt>
-<dd>2500</dd>
-		</dl>
--->
-			<p class="gigNote">京都の街を使ったライブサーキット！<br />
-				僕は寺町 大丈夫にて15:30頃から歌います！
-			</p>
- </article>
-<article class="gigSchedule">
-<h3 class="gigDate">
-6月7日(土)<span class="gigPlace">
-	<a href="https://twitter.com/casina1984" rel="noopener noreferrer" target="_blank">兵庫 和田岬カルチア食堂</a>
-	</span>
-	</h3> 
-	<p class="address">
-		兵庫県神戸市兵庫区笠松通７丁目１−８<a href="https://goo.gl/maps/gnjBsgjFiRdzjEtn8"  rel="noopener noreferrer" target="_blank">(地図)</a>
-	<br />電話:<a href="tel:0752547810" class="tel"075-254-7810</a>
-	</p>
-					<!--
-<dl class="gigDetail">
-<dt>出演</dt>
-<dd>｜市村マサミ｜山下聡美｜いわいあや子 </dd>
-	<dt>開場</dt>
-<dd>19:00</dd>
-	<dt>開演</dt>
-<dd>19:30</dd>
-	<dt>前売</dt>
-<dd>2000</dd>
-	<dt>当日</dt>
-<dd>2500</dd>
-		</dl>
-					-->
-			<p class="gigNote">詳細未定
-			</p>
- </article>
-		<article class="gigSchedule">
-<h3 class="gigDate">
-6月9日(月)<span class="gigPlace">
-	<a href="http://www.ooh-la-la.jp/" rel="noopener noreferrer" target="_blank">京都 西院ウーララ</a>
-	</span>
-	</h3> 
-	<p class="address">
-		京都府京都市右京区西院東今田町２０ シャピタン六角<a href="https://goo.gl/maps/NY7nDNdcyeMn6CFg9"  rel="noopener noreferrer" target="_blank">(地図)</a>
-	<br />電話:<a href="tel:0759258121" class="tel">0759258121</a>
-	</p>
-	<p class="gigTitle">【ウーララ２５周年イベント】</p>
-<dl class="gigDetail">
-<dt>出演</dt>
-<dd>三上寛｜市村マサミ｜ペイ釣ケイスーケ </dd>
-<!-- <dt>開場</dt>
-<dd>19:00</dd>
-	<dt>開演</dt>
-<dd>19:30</dd>
-	<dt>前売</dt>
-<dd>2000</dd>
-	<dt>当日</dt>
-<dd>2500</dd>
-		</dl> -->
-			<p class="gigNote">憧れの三上寛さんと！絶対に来てくれよな！
-			</p>
- </article>
+<h2 id="gig">ライブの予定</h2>
+
+<!-- 差し込み先：ここにGASが返すHTML断片が入る -->
+<div id="gig-list">読み込み中…</div>
+
+<!-- ICS（カレンダー登録）へのリンク -->
+<p class="gig-ics">
+  <a id="ics-link" href="#" rel="nofollow">📅 iCal(ICS)で登録</a>
+</p>
+
+<script defer>
+  // ★ あなたがデプロイした GAS の WebアプリURL に置き換え
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwwqT9BqiE0W6KF1ZUcClrScaG9vE_lkgPD7W7kIlfThQu4yTW7YFJyzyA_VjA_t-UYew/exec';
+
+  async function injectGigs() {
+    const wrap = document.getElementById('gig-list');
+    const ics = document.getElementById('ics-link');
+    ics.href = `${ENDPOINT}?type=ics`;
+
+    try {
+      const res = await fetch(`${ENDPOINT}?type=html`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(res.status);
+      const html = await res.text();
+      wrap.innerHTML = html;
+    } catch (err) {
+      console.error(err);
+      wrap.innerHTML = '<p>読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
+    }
+  }
+  injectGigs();
+</script>
+
+<noscript>
+  <p>JavaScript を有効にすると最新のライブ予定が表示されます。</p>
+</noscript>
       </section>
 	    
       <section>
