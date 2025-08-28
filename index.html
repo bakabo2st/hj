@@ -189,28 +189,21 @@
       const html = await res.text();
       wrap.innerHTML = html;
 
-      // ★ ここが“保険”：h3.gigDate の先頭テキストを「YYYY/M/D(曜)」だけにトリム
-      const dayJP = '日月火水木金土';
+            // ★ gigDate の「 / 開演 …」を削除して日付+曜日だけに戻す
       wrap.querySelectorAll('h3.gigDate').forEach(h3 => {
-        // 先頭テキストノードだけを書き換える（会場の <span.gigPlace> は残す）
-        const firstText = Array.from(h3.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
-        if (firstText) {
-          const m = firstText.textContent.match(new RegExp(`^\\s*(\\d{4}/\\d{1,2}/\\d{1,2}\\([${dayJP}]\\))`));
+        const txt = h3.childNodes[0]; // 最初のテキストノード
+        if (txt && txt.nodeType === Node.TEXT_NODE) {
+          // 「YYYY/M/D(曜)」部分だけマッチ
+          const m = txt.textContent.match(/^(\s*\d{4}\/\d{1,2}\/\d{1,2}\([日月火水木金土]\))/);
           if (m) {
-            firstText.textContent = m[1] + ' ';
+            txt.textContent = m[1] + ' '; // 日付だけ残す
           } else {
-            // フォールバック：もし何か混じっていたらスラッシュ以降を削除
-            firstText.textContent = firstText.textContent
-              .replace(/\s*\/\s*(開場|開演).*$/, '')
-              .replace(/\s*\b(\d{1,2}:\d{2}).*$/, '');
+            // フォールバック：スラッシュ以降削除
+            txt.textContent = txt.textContent.replace(/\s*\/.*$/, '');
           }
         }
       });
-    } catch (err) {
-      console.error(err);
-      wrap.innerHTML = '<p>読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
-    }
-  }
+
   injectGigs();
 </script>
 
