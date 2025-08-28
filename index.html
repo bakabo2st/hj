@@ -176,6 +176,15 @@
 <script defer>
   // ★ あなたがデプロイした GAS の WebアプリURL に置き換え
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwSBNKvC-OC0kSzj5fSa-TqyGN6IhgyWDtEGsmAPVROJxC9_EAl97mQzF0tSA6vEW-W1A/exec';
+  // GASからのHTMLが入った直後に、h3の「/ 開場… / 開演…」を消す（保険）
+  (function pruneTimeFromHeader(){
+    const wrap = document.getElementById('gig-list');
+    if (!wrap) return;
+    // 既存のh3に時刻が混ざっていたら削除
+    wrap.querySelectorAll('h3.gigDate').forEach(h3 => {
+      h3.innerHTML = h3.innerHTML.replace(/ \/ (開場|開演)\s*[^<]+/g, '');
+    });
+  })();
 
   async function injectGigs() {
     const wrap = document.getElementById('gig-list');
