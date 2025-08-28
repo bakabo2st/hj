@@ -174,7 +174,6 @@
 </p>
 
 <script defer>
-  // あなたの /exec URL
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzaZQWcxjuwSSqpZKjuIlh_4AWTsKoLF5x7l8MB82xxtxegYtBv_3jwioPJ7mBRn6av9g/exec';
 
   async function injectGigs() {
@@ -183,29 +182,35 @@
     ics.href = `${ENDPOINT}?type=ics`;
 
     try {
-      // ★ キャッシュ無効化（古いHTMLが残らないように）
       const res = await fetch(`${ENDPOINT}?type=html&__t=${Date.now()}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(res.status);
       const html = await res.text();
       wrap.innerHTML = html;
 
-            // ★ gigDate の「 / 開演 …」を削除して日付+曜日だけに戻す
+      // ★ h3.gigDate のテキストから「 / 開演 …」を強制的に削除
       wrap.querySelectorAll('h3.gigDate').forEach(h3 => {
-        const txt = h3.childNodes[0]; // 最初のテキストノード
+        const txt = h3.childNodes[0]; // 先頭のテキストノード
         if (txt && txt.nodeType === Node.TEXT_NODE) {
-          // 「YYYY/M/D(曜)」部分だけマッチ
-          const m = txt.textContent.match(/^(\s*\d{4}\/\d{1,2}\/\d{1,2}\([日月火水木金土]\))/);
+          // 「YYYY/M/D(曜)」または「M月D日(曜)」までを残す
+          const m = txt.textContent.match(/^\s*([\d]{4}\/\d{1,2}\/\d{1,2}\([日月火水木金土]\)|\d{1,2}月\d{1,2}日\([日月火水木金土]\))/);
           if (m) {
-            txt.textContent = m[1] + ' '; // 日付だけ残す
+            txt.textContent = m[1] + ' ';
           } else {
-            // フォールバック：スラッシュ以降削除
+            // フォールバック：スラッシュ以降は全部カット
             txt.textContent = txt.textContent.replace(/\s*\/.*$/, '');
           }
         }
       });
 
+    } catch (err) {
+      console.error(err);
+      wrap.innerHTML = '<p>読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
+    }
+  }
+
   injectGigs();
 </script>
+
 
 
 <noscript>
