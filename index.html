@@ -176,41 +176,93 @@
 <script defer>
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzaZQWcxjuwSSqpZKjuIlh_4AWTsKoLF5x7l8MB82xxtxegYtBv_3jwioPJ7mBRn6av9g/exec';
 
+  function hhmmFromWeirdDate(text) {
+    // "Sat Dec 30 1899 19:00:00 GMT+0900 (日本標準時)" → "19:00"
+    const d = new Date(text);
+    if (isNaN(d)) return null;
+    const h = String(d.getHours()).padStart(2, '0');
+    const m = String(d.getMinutes()).padStart(2, '0');
+    return `${h}:${m}`;
+  }
+
+  function postProcessGigs(wrap) {
+    // 1) 見出し：日付だけに（西暦入り）強制
+    wrap.querySelectorAll('h3.gigDate').forEach(h3 => {
+      // data-date があればそれを優先、無ければテキストから拾う
+      let iso = h3.getAttribute('data-date'); // 例: 2025-08-29（後でGAS側出力に追加推奨）
+      if (!iso) {
+        // "8月29日(金)" などから日月を拾う（西暦は年欄から拾えないので当年扱い→後でGAS側修正推奨）
+        const m = h3.textContent.match(/(\d{1,2})月(\d{1,2})日\(([日月火水木金土])\)/);
+        if (m) {
+          const now = new Date();
+          const yyyy = now.getFullYear();
+          const mm = +m[1], dd = +m[2];
+          const d = new Date(yyyy, mm - 1, dd);
+          const w = '日月火水木金土'[d.getDay()];
+          const firstText = [...h3.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
+          if (firstText) firstText.textContent = `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}(${w}) `;
+        } else {
+          // 既に "YYYY/M/D(曜)" なら「 / 開場/開演…」を削る
+          const firstText = [...h3.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
+          if (firstText) {
+            firstText.textContent = firstText.textContent
+              .replace(/\s*\/\s*(開場|開演).*$/, '')
+              .replace(/\s*\b(\d{1,2}:\d{2}).*$/, '');
+          }
+        }
+      } else {
+        const d = new Date(iso + 'T00:00:00');
+        if (!isNaN(d)) {
+          const w = '日月火水木金土'[d.getDay()];
+          const firstText = [...h3.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
+          if (firstText) firstText.textContent = `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}(${w}) `;
+        }
+      }
+    });
+
+    // 2) 明細の「開場/開演」に 1899… が来たら "HH:mm" に変換
+    wrap.querySelectorAll('.gigDetail dt').forEach((dt) => {
+      const key = dt.textContent.trim();
+      if (key === '開場' || key === '開演') {
+        const dd = dt.nextElementSibling;
+        if (!dd) return;
+        const raw = dd.textContent.trim();
+        if (/1899|GMT|JST|\([^)]+\)/.test(raw)) {
+          const hm = hhmmFromWeirdDate(raw);
+          if (hm) dd.textContent = hm;
+        } else if (/^\d{1,2}：\d{2}$/.test(raw)) {
+          dd.textContent = raw.replace('：', ':'); // 全角コロンを半角に
+        }
+      }
+    });
+
+    // 3) 見出しに紛れた "/ 開場… / 開演…" を念のため削除（保険）
+    wrap.querySelectorAll('h3.gigDate').forEach(h3 => {
+      const firstText = [...h3.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
+      if (firstText) {
+        firstText.textContent = firstText.textContent
+          .replace(/\s*\/\s*(開場|開演)[^<]*/, '');
+      }
+    });
+  }
+
   async function injectGigs() {
     const wrap = document.getElementById('gig-list');
     const ics = document.getElementById('ics-link');
-    ics.href = `${ENDPOINT}?type=ics`;
-
+    if (ics) ics.href = `${ENDPOINT}?type=ics`;
     try {
       const res = await fetch(`${ENDPOINT}?type=html&__t=${Date.now()}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(res.status);
       const html = await res.text();
       wrap.innerHTML = html;
-
-      // ★ h3.gigDate のテキストから「 / 開演 …」を強制的に削除
-      wrap.querySelectorAll('h3.gigDate').forEach(h3 => {
-        const txt = h3.childNodes[0]; // 先頭のテキストノード
-        if (txt && txt.nodeType === Node.TEXT_NODE) {
-          // 「YYYY/M/D(曜)」または「M月D日(曜)」までを残す
-          const m = txt.textContent.match(/^\s*([\d]{4}\/\d{1,2}\/\d{1,2}\([日月火水木金土]\)|\d{1,2}月\d{1,2}日\([日月火水木金土]\))/);
-          if (m) {
-            txt.textContent = m[1] + ' ';
-          } else {
-            // フォールバック：スラッシュ以降は全部カット
-            txt.textContent = txt.textContent.replace(/\s*\/.*$/, '');
-          }
-        }
-      });
-
+      postProcessGigs(wrap); // ←ここで強制整形
     } catch (err) {
       console.error(err);
       wrap.innerHTML = '<p>読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
     }
   }
-
   injectGigs();
 </script>
-
 
 
 <noscript>
