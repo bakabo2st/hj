@@ -325,6 +325,7 @@ line-height: 1em;
 .gigAction { margin-top: .75rem; }
 .reserveBtn {
   display:inline-block; padding:.6rem 1rem; border-radius: .6rem;
-  background:#111; color:#fff; text-decoration:none; font-weight:600;
+  background:#C71585; color:#fff; text-decoration:none; font-weight:600;
 }
 .reserveBtn:hover { opacity:.85; }
+
